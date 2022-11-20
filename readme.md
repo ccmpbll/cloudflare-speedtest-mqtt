@@ -3,4 +3,4 @@
 
 A simple container designed to send CloudFlare speedtest results over MQTT.
 
-Heavily influenced by and some borrowed from ![https://github.com/simonjenny/fastcom-mqtt](https://github.com/simonjenny/fastcom-mqtt). Shoutout to Simon for a building a great project. 
+Heavily influenced by and some code borrowed from [https://github.com/simonjenny/fastcom-mqtt](https://github.com/simonjenny/fastcom-mqtt). Shoutout to Simon for a building a great project. 
