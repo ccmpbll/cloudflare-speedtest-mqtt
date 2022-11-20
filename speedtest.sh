@@ -3,9 +3,9 @@ while true
 do
 	echo "Running CloudFlare Speedtest..."
   
-  touch /tmp/speedtest-result
+  	touch /tmp/speedtest-result
 	cfspeedtest --json > /tmp/speedtest-result
-  RESULT=$(cat /tmp/speedtest-result)
+  	RESULT=$(cat /tmp/speedtest-result)
 
 	if [[ "${MQTT_PASS}" ]]; then
 	echo "Sending Data to MQTT ($MQTT_SERVER)..."
