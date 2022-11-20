@@ -3,4 +3,28 @@
 
 A simple container designed to send CloudFlare speedtest results over MQTT.
 
-Heavily influenced by and some code borrowed from [https://github.com/simonjenny/fastcom-mqtt](https://github.com/simonjenny/fastcom-mqtt). Shoutout to Simon for a building a great project. 
+Heavily influenced by and some code borrowed from [https://github.com/simonjenny/fastcom-mqtt](https://github.com/simonjenny/fastcom-mqtt). Also uses [https://github.com/tevslin/cloudflarepycli](https://github.com/tevslin/cloudflarepycli) to perform the speedtest. Shoutout to these two for building excellent projects. 
+
+
+
+Required environment variables:
+
+SLEEP : Seconds between speedtest runs
+
+MQTT_SERVER : IP address of MQTT server
+
+MQTT_TOPIC : Topic for speedtest results
+
+
+
+Optional environment variables:
+
+MQTT_USER: MQTT username
+
+MQTT_PASS: MQTT password
+
+
+Example:
+```
+docker run -e SLEEP='3600' -e MQTT_TOPIC='cfspeedtest/results' -e MQTT_SERVER_='192.168.1.10' ccmpbll/cloudflare-speedtest-mqtt:latest
+```
