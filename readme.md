@@ -9,12 +9,11 @@ Heavily influenced by and some code borrowed from [https://github.com/simonjenny
 
 Required environment variables:
 
-SLEEP : Seconds between speedtest runs
-
 MQTT_SERVER : IP address of MQTT server
 
 MQTT_TOPIC : Topic for speedtest results
 
+SLEEP : Seconds between speedtest runs
 
 
 Optional environment variables:
@@ -26,5 +25,5 @@ MQTT_PASS: MQTT password
 
 Example:
 ```
-docker run -e SLEEP='3600' -e MQTT_TOPIC='cfspeedtest/results' -e MQTT_SERVER_='192.168.1.10' ccmpbll/cloudflare-speedtest-mqtt:latest
+docker run -e MQTT_TOPIC='cfspeedtest/results' -e MQTT_SERVER_='192.168.1.10' -e SLEEP='3600' ccmpbll/cloudflare-speedtest-mqtt:latest
 ```
