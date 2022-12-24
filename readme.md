@@ -1,5 +1,5 @@
 # cloudflare-speedtest-mqtt
-![Image Build Status](https://img.shields.io/github/actions/workflow/status/ccmpbll/cloudflare-speedtest-mqtt/docker-image.yml?style=flat) ![Docker Image Size](https://img.shields.io/docker/image-size/ccmpbll/cloudflare-speedtest-mqtt/latest?style=flat) ![Docker Pulls](https://img.shields.io/docker/pulls/ccmpbll/cloudflare-speedtest-mqtt.svg?style=flat) ![License](https://img.shields.io/badge/License-GPLv3-blue.svg?style=flat)
+![Image Build Status](https://img.shields.io/github/actions/workflow/status/ccmpbll/cloudflare-speedtest-mqtt/docker-image.yml?branch=main) ![Docker Image Size](https://img.shields.io/docker/image-size/ccmpbll/cloudflare-speedtest-mqtt/latest) ![Docker Pulls](https://img.shields.io/docker/pulls/ccmpbll/cloudflare-speedtest-mqtt.svg) ![License](https://img.shields.io/badge/License-GPLv3-blue.svg)
 
 A simple container designed to send JSON formatted CloudFlare speedtest results over MQTT.
 
