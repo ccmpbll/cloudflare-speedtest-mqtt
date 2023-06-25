@@ -3,8 +3,7 @@ LABEL Name=cloudflare-speedest-mqtt Version=0.2
 LABEL maintainer="Chris Campbell"
 
 RUN apt-get update && apt-get dist-upgrade -y
-RUN apt-get install python3 python3-pip gnupg mosquitto-clients -y
-RUN pip install requests numpy
+RUN apt-get install python3 python3-pip python3-numpy python3-requests gnupg mosquitto-clients -y
 
 COPY cfspeedtest.py /opt
 COPY cfspeedtestclass.py /opt
