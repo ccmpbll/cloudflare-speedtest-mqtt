@@ -3,7 +3,9 @@
 
 A simple container designed to send JSON formatted CloudFlare speedtest results over MQTT.
 
-Heavily inspired by [https://github.com/simonjenny/fastcom-mqtt](https://github.com/simonjenny/fastcom-mqtt). Uses [https://github.com/tevslin/cloudflarepycli](https://github.com/tevslin/cloudflarepycli) to perform the speedtest. Shoutout to these two for building excellent projects.
+#### UPDATE 06/25/2023:
+
+I originally used [tevslin/cloudflarepycli](https://github.com/tevslin/cloudflarepycli) to perform the speedtest. However, the original author used a web service (ipdatabase.com) to return the internet service provider information for the current WAN IP address. In the last few days, that service has completely disappeared from the internet, causing errors when trying to run a speedtest. An [issue](https://github.com/tevslin/cloudflarepycli/issues/5) was filed describing this behavior back in November 2022, but no changes were made and no response was given. Since I am not certain this project is being actively maintained, I moved some of that code directly into my project, with some modifications.
 
 #### Required environment variables:
 
