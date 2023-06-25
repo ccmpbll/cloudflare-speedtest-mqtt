@@ -4,7 +4,7 @@ do
 	echo "Running CloudFlare Speedtest..."
 
 	touch /tmp/speedtest-result
-	python /opt/cfpyspeedtest.py --json > /tmp/speedtest-result
+	python3 /opt/cfspeedtest.py --json > /tmp/speedtest-result
 
 	if [[ "${MQTT_PASS}" ]]; then
 	echo "Sending Data to ($MQTT_SERVER)..."
