@@ -2,9 +2,9 @@
 while true
 do
 	echo "Running CloudFlare Speedtest..."
-  
-  	touch /tmp/speedtest-result
-	cfspeedtest --json > /tmp/speedtest-result
+
+	touch /tmp/speedtest-result
+	python /opt/cfpyspeedtest.py --json > /tmp/speedtest-result
 
 	if [[ "${MQTT_PASS}" ]]; then
 	echo "Sending Data to ($MQTT_SERVER)..."
@@ -12,13 +12,13 @@ do
 	else
 	echo "Sending Data to ($MQTT_SERVER) with no authentication..."
 		mosquitto_pub -h $MQTT_SERVER -t $MQTT_TOPIC -f /tmp/speedtest-result
-	fi 
-	
+	fi
+
 	echo "Cleaning up for the next run..."
 	rm /tmp/speedtest-result
-	
+
 	echo "Sleeping for $SLEEP Seconds..."
-	
-	sleep $SLEEP 
+
+	sleep $SLEEP
 
 done
