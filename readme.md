@@ -30,6 +30,7 @@ docker run -d -e MQTT_TOPIC='cfspeedtest/results' -e MQTT_SERVER_='192.168.1.10'
 
 I use Telegraf to get this data into my InfluxDB instance. Below is an excerpt from my Telegraf config that shows how I accomplish this. 
 I freely admit that I am not an expert here, so if there is an easier or simpler way to handle this, I am *very* open to suggestions.
+**NOTE:** I have removed the "service_provider" field from the output of the speedtest, so it must also be removed from the telegraf config. 
 
 ```TOML
 [[inputs.mqtt_consumer]]
