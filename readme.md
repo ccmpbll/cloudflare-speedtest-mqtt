@@ -43,10 +43,6 @@ path = "your_ip.value"
 rename = "wan_ip"
 type = "string"
 [[inputs.mqtt_consumer.json_v2.field]]
-path = "your_ISP.value"
-rename = "service_provider"
-type = "string"
-[[inputs.mqtt_consumer.json_v2.field]]
 path = "test_location_code.value"
 rename = "test_location_code"
 type = "string"
