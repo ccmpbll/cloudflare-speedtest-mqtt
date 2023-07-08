@@ -1,7 +1,7 @@
 # cloudflare-speedtest-mqtt
 ![Image Build Status](https://img.shields.io/github/actions/workflow/status/ccmpbll/cloudflare-speedtest-mqtt/docker-image.yml?branch=main) ![Docker Image Size](https://img.shields.io/docker/image-size/ccmpbll/cloudflare-speedtest-mqtt/latest) ![Docker Pulls](https://img.shields.io/docker/pulls/ccmpbll/cloudflare-speedtest-mqtt.svg) ![License](https://img.shields.io/badge/License-GPLv3-blue.svg)
 
-A simple container designed to send JSON formatted CloudFlare speedtest results over MQTT. Borrows code from [tevslin/cloudflarepycli](https://github.com/tevslin/cloudflarepycli) to perform the speedtest.
+A simple container designed to send JSON formatted CloudFlare speed test results over MQTT. Borrows code from [tevslin/cloudflarepycli](https://github.com/tevslin/cloudflarepycli) to perform the speed test.
 
 **NOTE:** Now that I have moved the necessary code directly into this project, I was able to make some changes that better suited my use case. I have added and renamed several output fields. If you are a current user and have issues, please check that you are referencing the correct field names.
 
@@ -9,9 +9,9 @@ A simple container designed to send JSON formatted CloudFlare speedtest results 
 
 MQTT_SERVER : IP address of MQTT server
 
-MQTT_TOPIC : Topic for speedtest results
+MQTT_TOPIC : Topic for speed test results
 
-SLEEP : Seconds between speedtest runs
+SLEEP : Seconds between speed test runs
 
 #### Optional environment variables:
 
@@ -27,7 +27,7 @@ docker run -d -e MQTT_TOPIC='cfspeedtest/results' -e MQTT_SERVER_='192.168.1.10'
 #### Telegraf Config Example
 
 I use Telegraf to get this data into my InfluxDB instance. Below is an excerpt from my Telegraf config that shows how I accomplish this. 
-I freely admit that I am not an expert here, so if there is an easier or simpler way to handle this, I am *very* open to suggestions.
+If there is a better way to handle this, I am *very* open to suggestions.
 
 ```TOML
 [[inputs.mqtt_consumer]]
@@ -104,5 +104,4 @@ type = "float"
 path = "90th_percentile_upload_Mbps.value"
 rename = "90th_percentile_upload_Mbps"
 type = "float"
-
 ```
