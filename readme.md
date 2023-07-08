@@ -1,11 +1,9 @@
 # cloudflare-speedtest-mqtt
 ![Image Build Status](https://img.shields.io/github/actions/workflow/status/ccmpbll/cloudflare-speedtest-mqtt/docker-image.yml?branch=main) ![Docker Image Size](https://img.shields.io/docker/image-size/ccmpbll/cloudflare-speedtest-mqtt/latest) ![Docker Pulls](https://img.shields.io/docker/pulls/ccmpbll/cloudflare-speedtest-mqtt.svg) ![License](https://img.shields.io/badge/License-GPLv3-blue.svg)
 
-A simple container designed to send JSON formatted CloudFlare speedtest results over MQTT.
+A simple container designed to send JSON formatted CloudFlare speedtest results over MQTT. Borrows code from [tevslin/cloudflarepycli](https://github.com/tevslin/cloudflarepycli) to perform the speedtest.
 
-#### UPDATE 06/25/2023:
-
-I originally used [tevslin/cloudflarepycli](https://github.com/tevslin/cloudflarepycli) to perform the speedtest. However, the original author used a web service (ipdatabase.com) to return the internet service provider information for the current WAN IP address. In the last few days, that service has completely disappeared from the internet, causing errors when trying to run a speedtest. An [issue](https://github.com/tevslin/cloudflarepycli/issues/5) was filed describing this behavior back in November 2022, but no changes were made and no response was given. Since I am not certain this project is being actively maintained, I moved some of that code directly into my project, with some modifications.
+**NOTE:** Now that I have moved the necessary code directly into this project, I was able to make some changes that better suited my use case. I have added and renamed several output fields. If you are a current user and have issues, please check that you are referencing the correct field names.
 
 #### Required environment variables:
 
@@ -30,7 +28,6 @@ docker run -d -e MQTT_TOPIC='cfspeedtest/results' -e MQTT_SERVER_='192.168.1.10'
 
 I use Telegraf to get this data into my InfluxDB instance. Below is an excerpt from my Telegraf config that shows how I accomplish this. 
 I freely admit that I am not an expert here, so if there is an easier or simpler way to handle this, I am *very* open to suggestions.
-**NOTE:** I have removed the "service_provider" field from the output of the speedtest, so it must also be removed from the telegraf config. 
 
 ```TOML
 [[inputs.mqtt_consumer]]
@@ -40,23 +37,35 @@ topics = ["<YOUR MQTT TOPIC>"]
 data_format = "json_v2"
 [[inputs.mqtt_consumer.json_v2]]
 [[inputs.mqtt_consumer.json_v2.field]]
-path = "your_ip.value"
+path = "wan_ip.value"
 rename = "wan_ip"
+type = "string"
+[[inputs.mqtt_consumer.json_v2.field]]
+path = "service_provider.value"
+rename = "service_provider"
 type = "string"
 [[inputs.mqtt_consumer.json_v2.field]]
 path = "test_location_code.value"
 rename = "test_location_code"
 type = "string"
 [[inputs.mqtt_consumer.json_v2.field]]
-path = "test_location_city.value"
-rename = "test_location_city"
+path = "client_location_city.value"
+rename = "client_location_city"
+type = "string"
+[[inputs.mqtt_consumer.json_v2.field]]
+path = "client_location_region.value"
+rename = "client_location_region"
+type = "string"
+[[inputs.mqtt_consumer.json_v2.field]]
+path = "client_location_country.value"
+rename = "client_location_country"
 type = "string"
 [[inputs.mqtt_consumer.json_v2.field]]
 path = "latency_ms.value"
 rename = "latency_ms"
 type = "float"
 [[inputs.mqtt_consumer.json_v2.field]]
-path = "Jitter_ms.value"
+path = "jitter_ms.value"
 rename = "jitter_ms"
 type = "float"
 [[inputs.mqtt_consumer.json_v2.field]]
@@ -76,7 +85,7 @@ path = "25MB_download_Mbps.value"
 rename = "25MB_download_Mbps"
 type = "float"
 [[inputs.mqtt_consumer.json_v2.field]]
-path = "90th_percentile_download_speed.value"
+path = "90th_percentile_download_Mbps.value"
 rename = "90th_percentile_download_Mbps"
 type = "float"
 [[inputs.mqtt_consumer.json_v2.field]]
@@ -92,7 +101,7 @@ path = "10MB_upload_Mbps.value"
 rename = "10MB_upload_Mbps"
 type = "float"
 [[inputs.mqtt_consumer.json_v2.field]]
-path = "90th_percentile_upload_speed.value"
+path = "90th_percentile_upload_Mbps.value"
 rename = "90th_percentile_upload_Mbps"
 type = "float"
 
