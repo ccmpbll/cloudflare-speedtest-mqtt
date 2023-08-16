@@ -3,8 +3,6 @@
 
 A simple container designed to send JSON formatted CloudFlare speed test results over MQTT. Borrows code from [tevslin/cloudflarepycli](https://github.com/tevslin/cloudflarepycli) to perform the speed test.
 
-**NOTE:** Now that I have moved the necessary code directly into this project, I was able to make some changes that better suited my use case. I have added and renamed several output fields. If you are a current user and have issues, please check that you are referencing the correct field names.
-
 #### Required environment variables:
 
 MQTT_SERVER : IP address of MQTT server
@@ -26,8 +24,8 @@ docker run -d -e MQTT_TOPIC='cfspeedtest/results' -e MQTT_SERVER_='192.168.1.10'
 
 #### Telegraf Config Example
 
-I use Telegraf to get this data into my InfluxDB instance. Below is an excerpt from my Telegraf config that shows how I accomplish this. 
-If there is a better way to handle this, I am *very* open to suggestions.
+I use Telegraf to get this data into my InfluxDB instance. Below is an excerpt from my Telegraf config that demonstrates how I accomplish this. 
+If there is a better way to do this, I am *very* open to suggestions.
 
 ```TOML
 [[inputs.mqtt_consumer]]
