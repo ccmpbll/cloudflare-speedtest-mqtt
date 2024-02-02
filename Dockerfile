@@ -1,9 +1,10 @@
-FROM debian:latest
-LABEL Name=cloudflare-speedest-mqtt Version=0.2
+FROM debian:bookworm-slim
+LABEL Name=cloudflare-speedest-mqtt
 LABEL maintainer="Chris Campbell"
 
-RUN apt-get update && apt-get dist-upgrade -y
-RUN apt-get install python3 python3-pip python3-numpy python3-requests gnupg mosquitto-clients -y
+RUN apt update && apt full-upgrade -y
+RUN apt install python3 python3-numpy python3-requests gnupg mosquitto-clients -y
+RUN apt clean && apt autoremove -y
 
 COPY cfspeedtest.py /opt
 COPY cfspeedtestclass.py /opt
