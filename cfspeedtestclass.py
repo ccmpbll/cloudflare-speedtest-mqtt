@@ -60,7 +60,7 @@ class cloudflare:
     def getmetadata(self):
         #retrieves cloudflare colo, clientIp, asOrganization, region, city, country
         #unused fields: hostname, httpProtocol, asn, postalCode, latitude, longitude
-        r=self.mequests.get('http://speed.cloudflare.com/meta')
+        r=self.mequests.get('https://speed.cloudflare.com/meta')
         meta=r.json()
         return meta['colo'],meta['clientIp'],meta['asOrganization'],meta['region'],meta['city'],meta['country']
 
@@ -74,7 +74,7 @@ class cloudflare:
                 start=time.time()
                 err=False
                 try:
-                    r=self.mequests.get('http://speed.cloudflare.com/__down?bytes='+str(numbytes),timeout=self.timeout)
+                    r=self.mequests.get('https://speed.cloudflare.com/__down?bytes='+str(numbytes),timeout=self.timeout)
                     end=time.time()
                 except:
                     err=True
@@ -91,7 +91,7 @@ class cloudflare:
         for i in range(iterations):
             err=False
             try:
-                r=self.mequests.post('http://speed.cloudflare.com/__up',data=thedata,timeout=self.timeout)
+                r=self.mequests.post('https://speed.cloudflare.com/__up',data=thedata,timeout=self.timeout)
             except:
                 err=True
             if not err:
