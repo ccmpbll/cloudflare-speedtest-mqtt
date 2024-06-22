@@ -29,7 +29,7 @@ class cloudflare:
     #tests changed 1/1/22 to mirror those done by web-based test
     uploadtests=((101000,8,'100kB'),(1001000, 6,'1MB'),(10001000, 4,'10MB'))
     downloadtests=((101000, 10,'100kB'),(1001000, 8,'1MB'),(10001000, 6,'10MB'),(25001000, 4,'25MB'))
-    def __init__(self,dict=None,debug=False,printit=True,downtests=None,uptests=None,latencyreps=20,timeout=(25,25)):
+    def __init__(self,dict=None,debug=False,printit=True,downtests=None,uptests=None,latencyreps=20,timeout=(15,30)):
 
         import requests
 
