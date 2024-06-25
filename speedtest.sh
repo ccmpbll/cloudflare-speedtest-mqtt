@@ -4,7 +4,7 @@ do
 	echo "$(date +%D_%T) - Running CloudFlare Speed Test..."
 
 	touch /tmp/speedtest-result
-	cfspeedtest --json > /tmp/speedtest-result
+	cfspeedtest --json &> /tmp/speedtest-result
 
 	if [[ "${MQTT_PASS}" ]]; then
 	echo "$(date +%D_%T) - Sending Data to ($MQTT_SERVER)..."
