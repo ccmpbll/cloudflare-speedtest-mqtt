@@ -95,7 +95,7 @@ class cloudflare:
             except:
                 err=True
             if not err:
-                servertimes=servertimes+(float(r.headers['Server-Timing'].split('=')[1])/1e3,)
+                servertimes=servertimes+(float(r.headers['Server-Timing'].split('=')[1].split(",")[0])/1e3,)
         return (servertimes)
 
     def sprint(self,label,value):
