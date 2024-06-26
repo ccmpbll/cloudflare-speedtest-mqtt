@@ -7,6 +7,8 @@ RUN apt install python3 python3-pip gnupg mosquitto-clients -y
 RUN apt clean && apt autoremove -y
 RUN pip install cloudflarepycli --break-system-packages
 
+COPY cfspeedtest.py /opt
+COPY cfspeedtestclass.py /opt
 COPY speedtest.sh /usr/bin
 RUN ["chmod", "+x", "/usr/bin/speedtest.sh"]
 

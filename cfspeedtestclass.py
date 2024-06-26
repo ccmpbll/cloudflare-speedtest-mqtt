@@ -80,7 +80,7 @@ class cloudflare:
                     err=True
                 if not err:
                     fulltimes=fulltimes+(end-start,)
-                    servertimes=servertimes+(float(r.headers['Server-Timing'].split('=')[1])/1e3,)
+                    servertimes=servertimes+(float(r.headers['Server-Timing'].split('=')[1].split(",")[0])/1e3,)
                     requesttimes=requesttimes+(r.elapsed.seconds+r.elapsed.microseconds/1e6,)
         return (fulltimes,servertimes,requesttimes)
 
