@@ -1,7 +1,7 @@
 # cloudflare-speedtest-mqtt
 ![Image Build Status](https://img.shields.io/github/actions/workflow/status/ccmpbll/cloudflare-speedtest-mqtt/docker-image.yml?branch=main) ![Docker Image Size](https://img.shields.io/docker/image-size/ccmpbll/cloudflare-speedtest-mqtt/latest) ![Docker Pulls](https://img.shields.io/docker/pulls/ccmpbll/cloudflare-speedtest-mqtt.svg) ![License](https://img.shields.io/badge/License-GPLv3-blue.svg)
 
-THIS REPO IS ARCHIVED AND NO LONGER MAINTAINED.
+THIS REPO IS ARCHIVED AND NO LONGER MAINTAINED. The upstream project that I used for this is no longer maintained and I have a couple of other projects that use Ookla speedtests to accomplish the same goals. 
 
 A simple container designed to send JSON formatted CloudFlare speed test results over MQTT. Borrows code from [tevslin/cloudflarepycli](https://github.com/tevslin/cloudflarepycli) to perform the speed test.
 
