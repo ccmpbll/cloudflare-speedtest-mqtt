@@ -1,6 +1,8 @@
 # cloudflare-speedtest-mqtt
 ![Image Build Status](https://img.shields.io/github/actions/workflow/status/ccmpbll/cloudflare-speedtest-mqtt/docker-image.yml?branch=main) ![Docker Image Size](https://img.shields.io/docker/image-size/ccmpbll/cloudflare-speedtest-mqtt/latest) ![Docker Pulls](https://img.shields.io/docker/pulls/ccmpbll/cloudflare-speedtest-mqtt.svg) ![License](https://img.shields.io/badge/License-GPLv3-blue.svg)
 
+THIS REPO IS ARCHIVED AND NO LONGER MAINTAINED.
+
 A simple container designed to send JSON formatted CloudFlare speed test results over MQTT. Borrows code from [tevslin/cloudflarepycli](https://github.com/tevslin/cloudflarepycli) to perform the speed test.
 
 #### Required environment variables:
